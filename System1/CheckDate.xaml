@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>546,1556</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>546,1656</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckDate_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -68,9 +68,9 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckDate" sap:VirtualizedContainerService.HintSize="526,1496" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckDate" sap:VirtualizedContainerService.HintSize="526,1596" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="scg:Dictionary(ui:GenericValue, ui:GenericValue)" Default="[New Dictionary(Of GenericValue, GenericValue) From {{&quot;January&quot;,&quot;01&quot;},{&quot;February&quot;,&quot;02&quot;},{&quot;March&quot;,&quot;03&quot;},{&quot;April&quot;,&quot;04&quot;},{&quot;May&quot;,&quot;05&quot;},{&quot;June&quot;,&quot;06&quot;},{&quot;July&quot;,&quot;07&quot;},{&quot;August&quot;,&quot;08&quot;},{&quot;September&quot;,&quot;09&quot;},{&quot;October&quot;,&quot;10&quot;},{&quot;November&quot;,&quot;11&quot;},{&quot;December&quot;,&quot;12&quot;}}]" Name="dateD" />
+      <Variable x:TypeArguments="scg:Dictionary(ui:GenericValue, ui:GenericValue)" Name="dateD" />
       <Variable x:TypeArguments="x:String" Name="date1" />
       <Variable x:TypeArguments="x:String" Name="date2" />
       <Variable x:TypeArguments="s:DateTime" Name="dateFrom" />
@@ -81,6 +81,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(ui:GenericValue, ui:GenericValue)">[dateD]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(ui:GenericValue, ui:GenericValue)">[New Dictionary(Of GenericValue, GenericValue) From {{"January","01"},{"February","02"},{"March","03"},{"April","04"},{"May","05"},{"June","06"},{"July","07"},{"August","08"},{"September","09"},{"October","10"},{"November","11"},{"December","12"}}]</InArgument>
+      </Assign.Value>
+    </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_8">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[dateFromValid]</OutArgument>
