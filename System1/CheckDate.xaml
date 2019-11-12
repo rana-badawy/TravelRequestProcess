@@ -6,12 +6,14 @@
     <x:Property Name="monthto" Type="InArgument(ui:GenericValue)" />
     <x:Property Name="yearfrom" Type="InArgument(ui:GenericValue)" />
     <x:Property Name="yearto" Type="InArgument(ui:GenericValue)" />
-    <x:Property Name="dateIsValid" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="dateFromValid" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="dateToValid" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="compareDateValid" Type="OutArgument(x:Boolean)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>546,860</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>546,1556</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckDate_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -66,7 +68,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckDate" sap:VirtualizedContainerService.HintSize="526,800" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckDate" sap:VirtualizedContainerService.HintSize="526,1496" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(ui:GenericValue, ui:GenericValue)" Default="[New Dictionary(Of GenericValue, GenericValue) From {{&quot;January&quot;,&quot;01&quot;},{&quot;February&quot;,&quot;02&quot;},{&quot;March&quot;,&quot;03&quot;},{&quot;April&quot;,&quot;04&quot;},{&quot;May&quot;,&quot;05&quot;},{&quot;June&quot;,&quot;06&quot;},{&quot;July&quot;,&quot;07&quot;},{&quot;August&quot;,&quot;08&quot;},{&quot;September&quot;,&quot;09&quot;},{&quot;October&quot;,&quot;10&quot;},{&quot;November&quot;,&quot;11&quot;},{&quot;December&quot;,&quot;12&quot;}}]" Name="dateD" />
       <Variable x:TypeArguments="x:String" Name="date1" />
@@ -81,7 +83,23 @@
     </sap:WorkflowViewStateService.ViewState>
     <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_8">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Boolean">[dateIsValid]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean">[dateFromValid]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[dateToValid]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[compareDateValid]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:Boolean">True</InArgument>
@@ -119,11 +137,35 @@
         <InArgument x:TypeArguments="s:DateTime">[Convert.toDatetime(Datetime.parseexact(date2,"dd/MM/yyyy",System.Globalization.DateTimeFormatInfo.InvariantInfo))]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[(DateTime.Compare(dateFrom, DateTime.Now) &lt; 0) Or (DateTime.Compare(dateTo, DateTime.Now) &lt; 0) Or (DateTime.Compare(dateFrom, dateTo) &gt; 0)]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[DateTime.Compare(dateFrom, DateTime.Now) &lt; 0]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[dateFromValid]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <If Condition="[DateTime.Compare(dateTo, DateTime.Now) &lt; 0]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[dateToValid]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <If Condition="[DateTime.Compare(dateFrom, dateTo) &gt; 0]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
           <Assign.To>
-            <OutArgument x:TypeArguments="x:Boolean">[dateIsValid]</OutArgument>
+            <OutArgument x:TypeArguments="x:Boolean">[compareDateValid]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="x:Boolean">False</InArgument>

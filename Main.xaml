@@ -568,7 +568,7 @@
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <If Condition="[item.Contains(&quot;.xlsm&quot;) Or item.Contains(&quot;.xlsx&quot;)]" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_11">
                                                     <If.Then>
-                                                      <Sequence DisplayName="ReadTemplate" sap:VirtualizedContainerService.HintSize="1026,3194" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                                      <Sequence DisplayName="ReadTemplate" sap:VirtualizedContainerService.HintSize="1026,3321" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                                         <Sequence.Variables>
                                                           <Variable x:TypeArguments="x:String" Name="curRequestPath" />
                                                           <Variable x:TypeArguments="ui:GenericValue" Name="ID" />
@@ -631,6 +631,73 @@
                                                             <OutArgument x:TypeArguments="ui:GenericValue" x:Key="round_trip">[round_trip]</OutArgument>
                                                           </ui:InvokeWorkflowFile.Arguments>
                                                         </ui:InvokeWorkflowFile>
+                                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CheckDate workflow" sap:VirtualizedContainerService.HintSize="984,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="System1\CheckDate.xaml">
+                                                          <ui:InvokeWorkflowFile.Arguments>
+                                                            <InArgument x:TypeArguments="ui:GenericValue" x:Key="dayfrom">
+                                                              <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="dayfrom">
+                                                                <mva:VisualBasicValue.Result>
+                                                                  <OutArgument x:TypeArguments="ui:GenericValue" />
+                                                                </mva:VisualBasicValue.Result>
+                                                              </mva:VisualBasicValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="ui:GenericValue" x:Key="dayto">
+                                                              <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="dayto">
+                                                                <mva:VisualBasicValue.Result>
+                                                                  <OutArgument x:TypeArguments="ui:GenericValue" />
+                                                                </mva:VisualBasicValue.Result>
+                                                              </mva:VisualBasicValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="ui:GenericValue" x:Key="monthfrom">
+                                                              <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="monthfrom">
+                                                                <mva:VisualBasicValue.Result>
+                                                                  <OutArgument x:TypeArguments="ui:GenericValue" />
+                                                                </mva:VisualBasicValue.Result>
+                                                              </mva:VisualBasicValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="ui:GenericValue" x:Key="monthto">
+                                                              <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="monthto">
+                                                                <mva:VisualBasicValue.Result>
+                                                                  <OutArgument x:TypeArguments="ui:GenericValue" />
+                                                                </mva:VisualBasicValue.Result>
+                                                              </mva:VisualBasicValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="ui:GenericValue" x:Key="yearfrom">
+                                                              <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="yearfrom">
+                                                                <mva:VisualBasicValue.Result>
+                                                                  <OutArgument x:TypeArguments="ui:GenericValue" />
+                                                                </mva:VisualBasicValue.Result>
+                                                              </mva:VisualBasicValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="ui:GenericValue" x:Key="yearto">
+                                                              <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="yearto">
+                                                                <mva:VisualBasicValue.Result>
+                                                                  <OutArgument x:TypeArguments="ui:GenericValue" />
+                                                                </mva:VisualBasicValue.Result>
+                                                              </mva:VisualBasicValue>
+                                                            </InArgument>
+                                                            <OutArgument x:TypeArguments="x:Boolean" x:Key="dateFromValid">
+                                                              <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="dateFromValid">
+                                                                <mva:VisualBasicReference.Result>
+                                                                  <OutArgument x:TypeArguments="Location(x:Boolean)" />
+                                                                </mva:VisualBasicReference.Result>
+                                                              </mva:VisualBasicReference>
+                                                            </OutArgument>
+                                                            <OutArgument x:TypeArguments="x:Boolean" x:Key="dateToValid">
+                                                              <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="dateToValid">
+                                                                <mva:VisualBasicReference.Result>
+                                                                  <OutArgument x:TypeArguments="Location(x:Boolean)" />
+                                                                </mva:VisualBasicReference.Result>
+                                                              </mva:VisualBasicReference>
+                                                            </OutArgument>
+                                                            <OutArgument x:TypeArguments="x:Boolean" x:Key="compareDateValid">
+                                                              <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="compareDateValid">
+                                                                <mva:VisualBasicReference.Result>
+                                                                  <OutArgument x:TypeArguments="Location(x:Boolean)" />
+                                                                </mva:VisualBasicReference.Result>
+                                                              </mva:VisualBasicReference>
+                                                            </OutArgument>
+                                                          </ui:InvokeWorkflowFile.Arguments>
+                                                        </ui:InvokeWorkflowFile>
                                                         <If Condition="[cityfrom = Nothing Or cityto = Nothing]" sap:VirtualizedContainerService.HintSize="984,823" sap2010:WorkflowViewState.IdRef="If_21">
                                                           <If.Else>
                                                             <Sequence sap:VirtualizedContainerService.HintSize="611,675" sap2010:WorkflowViewState.IdRef="Sequence_33">
@@ -641,41 +708,11 @@
                                                               </sap:WorkflowViewStateService.ViewState>
                                                               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="569,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="System1\checkValidCity.xaml">
                                                                 <ui:InvokeWorkflowFile.Arguments>
-                                                                  <InArgument x:TypeArguments="ui:GenericValue" x:Key="cityto">
-                                                                    <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="cityto">
-                                                                      <mva:VisualBasicValue.Result>
-                                                                        <OutArgument x:TypeArguments="ui:GenericValue" />
-                                                                      </mva:VisualBasicValue.Result>
-                                                                    </mva:VisualBasicValue>
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="ui:GenericValue" x:Key="cityfrom">
-                                                                    <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="cityfrom">
-                                                                      <mva:VisualBasicValue.Result>
-                                                                        <OutArgument x:TypeArguments="ui:GenericValue" />
-                                                                      </mva:VisualBasicValue.Result>
-                                                                    </mva:VisualBasicValue>
-                                                                  </InArgument>
-                                                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="citytobool">
-                                                                    <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="citytobool">
-                                                                      <mva:VisualBasicReference.Result>
-                                                                        <OutArgument x:TypeArguments="Location(x:Boolean)" />
-                                                                      </mva:VisualBasicReference.Result>
-                                                                    </mva:VisualBasicReference>
-                                                                  </OutArgument>
-                                                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="cityfrombool">
-                                                                    <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="cityfrombool">
-                                                                      <mva:VisualBasicReference.Result>
-                                                                        <OutArgument x:TypeArguments="Location(x:Boolean)" />
-                                                                      </mva:VisualBasicReference.Result>
-                                                                    </mva:VisualBasicReference>
-                                                                  </OutArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="curRequestPath">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="curRequestPath">
-                                                                      <mva:VisualBasicValue.Result>
-                                                                        <OutArgument x:TypeArguments="x:String" />
-                                                                      </mva:VisualBasicValue.Result>
-                                                                    </mva:VisualBasicValue>
-                                                                  </InArgument>
+                                                                  <InArgument x:TypeArguments="ui:GenericValue" x:Key="cityto">[cityto]</InArgument>
+                                                                  <InArgument x:TypeArguments="ui:GenericValue" x:Key="cityfrom">[cityfrom]</InArgument>
+                                                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="citytobool">[citytobool]</OutArgument>
+                                                                  <OutArgument x:TypeArguments="x:Boolean" x:Key="cityfrombool">[cityfrombool]</OutArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="curRequestPath">[curRequestPath]</InArgument>
                                                                 </ui:InvokeWorkflowFile.Arguments>
                                                               </ui:InvokeWorkflowFile>
                                                               <If Condition="[cityfrombool]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_19">
@@ -967,6 +1004,9 @@
         <Variable x:TypeArguments="ui:GenericValue" Name="yearto" />
         <Variable x:TypeArguments="ui:GenericValue" Name="yearfrom" />
         <Variable x:TypeArguments="ui:GenericValue" Name="cityfrom" />
+        <Variable x:TypeArguments="x:Boolean" Name="dateFromValid" />
+        <Variable x:TypeArguments="x:Boolean" Name="dateToValid" />
+        <Variable x:TypeArguments="x:Boolean" Name="compareDateValid" />
       </StateMachine.Variables>
     </StateMachine>
   </Sequence>
