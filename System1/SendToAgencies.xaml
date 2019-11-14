@@ -67,6 +67,7 @@
   <Sequence sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="SendToAgencies" sap:VirtualizedContainerService.HintSize="376,613" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="cc" />
+      <Variable x:TypeArguments="x:String" Name="sendTo" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -79,7 +80,7 @@
         <OutArgument x:TypeArguments="x:String">[cc]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[mail.CC.ToString + ";"]</InArgument>
+        <InArgument x:TypeArguments="x:String">[mail.CC.ToString + ";" + TravelAdmin]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[agencies]">
@@ -88,18 +89,18 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="agency" />
           </ActivityAction.Argument>
-          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[cc]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[sendTo]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[cc + agency + ";"]</InArgument>
+              <InArgument x:TypeArguments="x:String">[sendTo + agency + ";"]</InArgument>
             </Assign.Value>
           </Assign>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Dear Mr/Mrs,&quot; + Environment.NewLine + Environment.NewLine + &quot;Can you please send me flights info, departure and return, for:&quot; + Environment.NewLine + &quot;Name: &quot; + name + Environment.NewLine + &quot;Traveling From: &quot; + cityFrom + Environment.NewLine + &quot;To: &quot; + cityTo + Environment.NewLine + &quot;Traveling Date: &quot; + dateFrom + Environment.NewLine + &quot;Return Date: &quot; + dateTo + Environment.NewLine + Environment.NewLine + &quot;Thank you&quot;]" Cc="[cc]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;Travel Request ID : &quot; + requestID]" To="[TravelAdmin]">
+    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Dear Mr/Mrs Travel Agency Representitative,&quot; + Environment.NewLine + Environment.NewLine + &quot;Can you please send me flights offer, departure and return, for:&quot; + Environment.NewLine + &quot;Name: &quot; + name + Environment.NewLine + &quot;Traveling From: &quot; + cityFrom + Environment.NewLine + &quot;To: &quot; + cityTo + Environment.NewLine + &quot;Traveling Date: &quot; + dateFrom + Environment.NewLine + &quot;Return Date: &quot; + dateTo + Environment.NewLine + Environment.NewLine + &quot;Thank you&quot;]" Cc="[cc]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;Travel Request ID : &quot; + requestID]" To="[sendTo]">
       <ui:SendOutlookMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
       </ui:SendOutlookMail.Files>
