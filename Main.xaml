@@ -198,7 +198,7 @@
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[adminsResult IsNot Nothing And (emailVariable.Body.Contains("Approved") Or emailVariable.Body.Contains("approved"))]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="174,163" sap2010:WorkflowViewState.IdRef="State_5">
+                              <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="422,1431" sap2010:WorkflowViewState.IdRef="State_5">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="376,1033" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -425,7 +425,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Transition.Condition>[emailsubject.Contains("TRAVEL REQUEST") = True]</Transition.Condition>
                     <Transition.To>
-                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="bridge" DisplayName="Travel Request" sap:VirtualizedContainerService.HintSize="346,516" sap2010:WorkflowViewState.IdRef="State_4">
+                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="bridge" DisplayName="Travel Request" sap:VirtualizedContainerService.HintSize="134,88" sap2010:WorkflowViewState.IdRef="State_4">
                         <State.Entry>
                           <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="689,588" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[emailVariable.Attachments]">
                             <ui:ForEach.Body>
@@ -558,7 +558,7 @@
                               </mva:VisualBasicValue>
                             </Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID7" sap2010:Annotation.AnnotationText="reads cells and sends email to travel admin" DisplayName="process template" sap:VirtualizedContainerService.HintSize="160,119" sap2010:WorkflowViewState.IdRef="State_9">
+                              <State x:Name="__ReferenceID7" sap2010:Annotation.AnnotationText="reads cells and sends email to travel admin" DisplayName="process template" sap:VirtualizedContainerService.HintSize="837,2719" sap2010:WorkflowViewState.IdRef="State_9">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="791,2336" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                     <Sequence.Variables>
@@ -678,7 +678,7 @@
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <If Condition="[item.Contains(&quot;.XLSM&quot;) Or item.Contains(&quot;.XLSX&quot;)]" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_11">
                                                     <If.Then>
-                                                      <Sequence DisplayName="ReadTemplate" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                                      <Sequence DisplayName="ReadTemplate" sap:VirtualizedContainerService.HintSize="2121,5889" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                                         <Sequence.Variables>
                                                           <Variable x:TypeArguments="x:String" Name="curRequestPath" />
                                                           <Variable x:TypeArguments="ui:GenericValue" Name="ID" />
